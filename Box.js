@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
 	},
 	icons: {
 		flex: 1,
-		alignItems: 'center'
+		alignItems: 'center',
+		paddingTop: 10
 	},
 	title: {
 		fontSize: 18,
