@@ -5,23 +5,21 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default class Box extends React.Component {
 	render() {
-		const title = 'Batalla de Gránico'
-		const urlImage =
-			'https://assets.arrecaballo.es/wp-content/uploads/2014/03/batalla-de-granico-alejandro-cruzando-el-rio.png'
-
+		const { title, image, likes, comments } = this.props
+		console.log(this.props)
 		return (
 			<View style={styles.box}>
-				<Image style={styles.image} source={{ uri: urlImage }} />
+				<Image style={styles.image} source={{ uri: image }} />
 				<View style={styles.info}>
 					<Text style={styles.title}>{title}</Text>
 					<View style={styles.actions}>
 						<View style={styles.icons}>
 							<Icon name="heart-o" size={30} color="white" />
-							<Text style={styles.text}>50</Text>
+							<Text style={styles.text}>Likes</Text>
 						</View>
 						<View style={styles.icons}>
 							<Icon name="comments" size={30} color="white" />
-							<Text style={styles.text}>50</Text>
+							<Text style={styles.text}>Comments</Text>
 						</View>
 					</View>
 				</View>
