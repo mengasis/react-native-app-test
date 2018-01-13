@@ -1,30 +1,46 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import {
+	StyleSheet,
+	Text,
+	View,
+	Image,
+	TouchableWithoutFeedback
+} from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 class Box extends React.Component {
 	render() {
-		const { title, image, likes, comments } = this.props
+		const { id, title, image, likes, comments } = this.props
 
 		return (
-			<View style={styles.box}>
-				<Image style={styles.image} source={{ uri: image }} />
-				<View style={styles.info}>
-					<Text style={styles.title}>{title}</Text>
-					<View style={styles.actions}>
-						<View style={styles.icons}>
-							<Icon name="heart-o" size={30} color="white" />
-							<Text style={styles.text}>{likes}</Text>
-						</View>
-						<View style={styles.icons}>
-							<Icon name="comments" size={30} color="white" />
-							<Text style={styles.text}>{comments}</Text>
+			<TouchableWithoutFeedback
+				onPress={() =>
+					this.props.navigation.navigate('BoxView', {
+						id,
+						title,
+						image
+					})
+				}
+			>
+				<View style={styles.box}>
+					<Image style={styles.image} source={{ uri: image }} />
+					<View style={styles.info}>
+						<Text style={styles.title}>{title}</Text>
+						<View style={styles.actions}>
+							<View style={styles.icons}>
+								<Icon name="heart-o" size={30} color="white" />
+								<Text style={styles.text}>{likes}</Text>
+							</View>
+							<View style={styles.icons}>
+								<Icon name="comments" size={30} color="white" />
+								<Text style={styles.text}>{comments}</Text>
+							</View>
 						</View>
 					</View>
 				</View>
-			</View>
+			</TouchableWithoutFeedback>
 		)
 	}
 }
@@ -36,7 +52,10 @@ Box.propTypes = {
 	title: PropTypes.string,
 	image: PropTypes.string,
 	likes: PropTypes.number,
-	comments: PropTypes.number
+	comments: PropTypes.number,
+	navigation: PropTypes.shape({
+		navigate: PropTypes.func
+	}).isRequired
 }
 
 const [white, black] = ['#FFF', '#000']

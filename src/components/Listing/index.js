@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { FlatList, Platform } from 'react-native'
 
 import battles from '../../data/battles'
 import Box from '../Box'
 
 class Listing extends Component {
-	_renderRow = ({ item }) => <Box {...item} />
+	_renderRow = ({ item }) => (
+		<Box navigation={this.props.navigation} {...item} />
+	)
 
 	_keyExtractor = battle => battle.id
 
@@ -26,6 +29,10 @@ class Listing extends Component {
 
 Listing.navigationOptions = {
 	header: null
+}
+
+Listing.propTypes = {
+	navigation: PropTypes.object
 }
 
 export default Listing
