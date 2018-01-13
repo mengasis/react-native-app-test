@@ -39,10 +39,12 @@ Box.propTypes = {
 	comments: PropTypes.number
 }
 
+const [white, black] = ['#FFF', '#000']
+
 const styles = StyleSheet.create({
 	box: {
 		flexDirection: 'row',
-		backgroundColor: '#FFF',
+		backgroundColor: white,
 		margin: 5
 	},
 	image: {
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
 	},
 	info: {
 		flex: 1,
-		backgroundColor: 'black',
+		backgroundColor: black,
 		justifyContent: 'center',
 		alignItems: 'center'
 	},
@@ -65,9 +67,9 @@ const styles = StyleSheet.create({
 	},
 	title: {
 		fontSize: 18,
-		color: 'white'
+		color: white
 	},
 	text: {
-		color: 'white'
+		color: white
 	}
 })
