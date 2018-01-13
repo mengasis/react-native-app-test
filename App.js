@@ -1,9 +1,9 @@
-import React from 'react'
+import { StackNavigator } from 'react-navigation'
 
-import Listing from './components/Listing'
+import Listing from './src/components/Listing'
 
-export default class App extends React.Component {
-	render() {
-		return <Listing />
-	}
-}
+const rootNavigation = StackNavigator({
+	Listing: { screen: Listing }
+})
+
+export default rootNavigation
