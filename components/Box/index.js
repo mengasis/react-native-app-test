@@ -1,12 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { StyleSheet, Text, View, Image } from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-export default class Box extends React.Component {
+class Box extends React.Component {
 	render() {
 		const { title, image, likes, comments } = this.props
-		console.log(this.props)
+
 		return (
 			<View style={styles.box}>
 				<Image style={styles.image} source={{ uri: image }} />
@@ -15,17 +16,27 @@ export default class Box extends React.Component {
 					<View style={styles.actions}>
 						<View style={styles.icons}>
 							<Icon name="heart-o" size={30} color="white" />
-							<Text style={styles.text}>Likes</Text>
+							<Text style={styles.text}>{likes}</Text>
 						</View>
 						<View style={styles.icons}>
 							<Icon name="comments" size={30} color="white" />
-							<Text style={styles.text}>Comments</Text>
+							<Text style={styles.text}>{comments}</Text>
 						</View>
 					</View>
 				</View>
 			</View>
 		)
 	}
+}
+
+export default Box
+
+Box.propTypes = {
+	id: PropTypes.number.isRequired,
+	title: PropTypes.string,
+	image: PropTypes.string,
+	likes: PropTypes.number,
+	comments: PropTypes.number
 }
 
 const styles = StyleSheet.create({
